@@ -1,0 +1,2 @@
+- integration testing at page level / component level
+- perform search when enter button is pushed
