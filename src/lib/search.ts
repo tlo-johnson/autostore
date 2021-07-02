@@ -4,7 +4,8 @@
  */
 
 import {searchUrl, hitsPerPage} from 'lib/constants';
-import {SearchResults} from 'domain/searchResults';
+import {SearchResults, ErrorSearchResults} from 'domain/searchResults';
+import {mapSearchResults} from 'lib/mappers/searchResults';
 
 export const performSearch = async (query: string): Promise<SearchResults> => {
   const body = {query, hitsPerPage};
@@ -13,10 +14,9 @@ export const performSearch = async (query: string): Promise<SearchResults> => {
   try {
     const response = await fetch(searchUrl, options);
     const data = await response.json();
-    console.log(data);
-    throw new Error("some error occurred");
-    return {success: true, data};
+    const {results, page} = mapSearchResults(data);
+    return {success: true, results, page};
   } catch {
-    return {success: false, data: []};
+    return ErrorSearchResults;
   }
 }
