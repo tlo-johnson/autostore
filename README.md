@@ -5,7 +5,16 @@ During the interview, we can talk about the solution and considerations taken in
 
 An example curl command is:
 
-```curl 'https://i1cqoys68c-dsn.algolia.net/1/indexes/stg_choicemarket_products/query?x-algolia-application-id=I1CQOYS68C&x-algolia-api-key=eac7b807c0109771a245855c7501fca3' -H 'Connection: keep-alive' -H 'accept: application/json' -H 'Origin: https://www.algolia.com' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept-Encoding: gzip, deflate, br' --data '{"params":"query=chicken&hitsPerPage=5"}' --compressed```
+```
+curl 'https://i1cqoys68c-dsn.algolia.net/1/indexes/stg_choicemarket_products/query?x-algolia-application-id=I1CQOYS68C&x-algolia-api-key=eac7b807c0109771a245855c7501fca3' \
+    -H 'Connection: keep-alive' \
+    -H 'accept: application/json' \
+    -H 'Origin: https://www.algolia.com' \
+    -H 'content-type: application/x-www-form-urlencoded' \
+    -H 'Accept-Encoding: gzip, deflate, br' \
+    --data '{"params":"query=chicken&hitsPerPage=5"}' \
+    --compressed
+```
 
 Key elements:
 
