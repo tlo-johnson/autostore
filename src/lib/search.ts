@@ -4,13 +4,19 @@
  */
 
 import {searchUrl, hitsPerPage} from 'lib/constants';
+import {SearchResults} from 'domain/searchResults';
 
-export const performSearch = async (query: string) => {
+export const performSearch = async (query: string): Promise<SearchResults> => {
   const body = {query, hitsPerPage};
   const options = {body: JSON.stringify(body), method: 'POST'};
-  const response = await fetch(searchUrl, options);
 
-  const data = await response.json();
-  // error handling?
-  console.log(data);
+  try {
+    const response = await fetch(searchUrl, options);
+    const data = await response.json();
+    console.log(data);
+    throw new Error("some error occurred");
+    return {success: true, data};
+  } catch {
+    return {success: false, data: []};
+  }
 }
