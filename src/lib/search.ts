@@ -7,8 +7,8 @@ import { searchUrl, hitsPerPage } from "lib/constants";
 import { SearchResult, ErrorSearchResult } from "domain/searchResults";
 import { mapSearchResults } from "lib/mappers/searchResults";
 
-export const performSearch = async (query: string): Promise<SearchResult> => {
-  const body = { query, hitsPerPage };
+export const performSearch = async (query: string, pageNumber: number = 0): Promise<SearchResult> => {
+  const body = { query, hitsPerPage, page: pageNumber };
   const options = { body: JSON.stringify(body), method: "POST" };
 
   try {

@@ -3,10 +3,11 @@ import "./Pagination.css";
 
 interface PaginationProps {
   numPages: number;
+  onPerformSearch: (pageNumber?: number) => void;
 }
 
 const Pagination = (props: PaginationProps) => {
-  const { numPages } = props;
+  const { numPages, onPerformSearch } = props;
 
   return (
     <ReactPaginate
@@ -18,6 +19,7 @@ const Pagination = (props: PaginationProps) => {
       breakLabel="..."
       containerClassName="pagination"
       activeClassName="current-page"
+      onPageChange={({ selected }) => onPerformSearch(selected)}
     />
   );
 };
