@@ -1,8 +1,11 @@
-export interface SearchResults {
+import { Product } from "domain/product";
+
+export interface SearchResult {
   success: boolean;
-  results: [];
+  products: Product[];
   page: number;
+  hasMorePages: boolean;
 }
 
-export const DefaultSearchResults = {success: true, results: []} as SearchResults;
-export const ErrorSearchResults = {success: false} as SearchResults;
+export const DefaultSearchResult = { success: true, products: [] as Product[] } as SearchResult;
+export const ErrorSearchResult = { success: false } as SearchResult;
