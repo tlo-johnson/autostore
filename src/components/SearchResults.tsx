@@ -1,13 +1,17 @@
 import { FunctionComponent } from "react";
-import { Product } from "domain/product";
+import { SearchResult } from "domain/searchResults";
 import Card from "components/Card";
+import ErrorMessage from "components/ErrorMessage";
 
 interface SearchResultsProps {
-  products: Product[];
+  result: SearchResult;
 }
 
 const SearchResults: FunctionComponent<SearchResultsProps> = (props) => {
-  const { products } = props;
+  const { result } = props;
+  if (!result.success) return <ErrorMessage />;
+
+  const { products } = result;
   return (
     <>
       {products.map((product) => (
