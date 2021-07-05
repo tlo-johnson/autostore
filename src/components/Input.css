@@ -1,0 +1,18 @@
+input {
+  background: rgb(243, 243, 243) none repeat scroll 0% 0%;
+  border: medium none;
+  border-radius: 0.75rem;
+  color: rgb(101, 101, 101);
+  padding: 1rem;
+  outline: currentcolor none medium;
+  transition: all 0.1s ease-in-out 0s;
+}
+
+input:hover {
+  background: rgb(249, 249, 249) none repeat scroll 0% 0%;
+}
+
+input:focus {
+  background: rgb(249, 249, 249) none repeat scroll 0% 0%;
+  color: black;
+}

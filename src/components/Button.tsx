@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import "./Button.css";
 
 interface ButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}

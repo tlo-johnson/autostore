@@ -9,9 +9,7 @@ function App() {
       <header>
         <Logo />
       </header>
-      <main>
-        <SearchPage />
-      </main>
+      <SearchPage />
     </div>
   );
 }

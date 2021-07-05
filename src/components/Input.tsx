@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import "./Input.css";
 
 interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
 

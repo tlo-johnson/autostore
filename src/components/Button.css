@@ -1,0 +1,15 @@
+button {
+  border: medium none;
+  outline: currentcolor none medium;
+  background: rgb(204, 0, 0) none repeat scroll 0% 0%;
+  border-radius: 12px;
+  padding: 1rem;
+  color: white;
+  transition: all 0.1s ease-in-out 0s;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(223, 52, 52) none repeat scroll 0% 0%;
+}

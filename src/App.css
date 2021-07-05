@@ -3,3 +3,7 @@
   max-width: 1200px;
   margin: auto;
 }
+
+.App header {
+  margin-bottom: 1rem;
+}
