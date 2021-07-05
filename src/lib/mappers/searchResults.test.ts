@@ -9,7 +9,7 @@ test("map raw search results to domain search results", () => {
 const expected = {
   page: 0,
   hasMorePages: true,
-  results: [
+  products: [
     {
       id: "f8e5d45f-7731-452d-8721-6919e07fcfa9",
       name: "ICE CREAM, Alden's, Vanilla Bean",
@@ -25,7 +25,6 @@ const expected = {
           name: "Chicken Kitchen",
         },
       ],
-      img: "v1583372011/staging/products/choice-market/72609741851",
     },
     {
       id: "eaeb7c41-6c8d-4f51-8c71-5c66b4470820",
@@ -43,7 +42,6 @@ const expected = {
           name: "Chicken Kitchen",
         },
       ],
-      img: "v1583372663/staging/products/choice-market/897229002164",
     },
   ],
 };

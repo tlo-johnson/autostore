@@ -8,7 +8,6 @@ export const mapSearchResults = (data: any) => {
     description: result.Description,
     tags: result.Tags.map(mapTag),
     categories: result.Categories.map(mapCategory),
-    img: result.Image?.Filename,
   }));
 
   const { page, nbPages } = data;

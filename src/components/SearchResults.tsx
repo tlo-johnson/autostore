@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { Product } from "domain/product";
+import Card from "components/Card";
 
 interface SearchResultsProps {
   products: Product[];
@@ -10,7 +11,7 @@ const SearchResults: FunctionComponent<SearchResultsProps> = (props) => {
   return (
     <>
       {products.map((product) => (
-        <p key={product.id}>{product.name}</p>
+        <Card key={product.id} product={product} />
       ))}
     </>
   );

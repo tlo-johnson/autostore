@@ -1,9 +1,10 @@
+import "./reset.css";
 import "./App.css";
 import SearchPage from "pages/search";
 
 function App() {
   return (
-    <main className="App">
+    <main className="app">
       <SearchPage />
     </main>
   );
