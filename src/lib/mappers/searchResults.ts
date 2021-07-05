@@ -10,10 +10,9 @@ export const mapSearchResults = (data: any) => {
     categories: result.Categories.map(mapCategory),
   }));
 
-  const { page, nbPages } = data;
-  const hasMorePages: boolean = !(page === nbPages);
+  const { page, nbPages: numPages } = data;
 
-  return { products, page, hasMorePages };
+  return { products, page, numPages };
 };
 
 const mapTag = (tag: RawTag) => tag.Name;

@@ -4,7 +4,7 @@ export interface SearchResult {
   success: boolean;
   products: Product[];
   page: number;
-  hasMorePages: boolean;
+  numPages: number;
 }
 
 export const DefaultSearchResult = { success: true, products: [] as Product[] } as SearchResult;

@@ -2,7 +2,7 @@ button {
   border: medium none;
   outline: currentcolor none medium;
   background: rgb(204, 0, 0) none repeat scroll 0% 0%;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   padding: 1rem;
   color: white;
   transition: all 0.1s ease-in-out 0s;
