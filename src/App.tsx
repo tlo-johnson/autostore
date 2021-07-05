@@ -1,12 +1,18 @@
 import "./reset.css";
 import "./App.css";
 import SearchPage from "pages/search";
+import Logo from "components/Logo";
 
 function App() {
   return (
-    <main className="app">
-      <SearchPage />
-    </main>
+    <div className="App">
+      <header>
+        <Logo />
+      </header>
+      <main>
+        <SearchPage />
+      </main>
+    </div>
   );
 }
 

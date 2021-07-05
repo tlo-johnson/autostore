@@ -8,7 +8,7 @@ interface CardProps {
 
 const Card: FunctionComponent<CardProps> = ({ product }) => {
   return (
-    <div className="container">
+    <div className="Card">
       <p>{`Name: ${product.name}`}</p>
       {product.description && <p>{`Description: ${product.description}`}</p>}
     </div>
