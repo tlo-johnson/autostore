@@ -11,10 +11,12 @@ import Pagination from "components/Pagination";
 const SearchPage: FunctionComponent = () => {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<SearchResult>(DefaultSearchResult);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   const onPerformSearch = async (pageNumber?: number) => {
     const result = await performSearch(query, pageNumber);
     setResult(result);
+    setSearchPerformed(true);
   };
 
   const searchOnEnter = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -27,8 +29,12 @@ const SearchPage: FunctionComponent = () => {
       <Button className="search" onClick={() => onPerformSearch()}>
         Search
       </Button>
-      <SearchResults result={result} />
-      <Pagination numPages={result.numPages} onPerformSearch={onPerformSearch} />
+      {searchPerformed && (
+        <>
+          <SearchResults result={result} />
+          <Pagination numPages={result.numPages} onPerformSearch={onPerformSearch} />
+        </>
+      )}
     </div>
   );
 };

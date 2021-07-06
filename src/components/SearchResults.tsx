@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { SearchResult } from "domain/searchResults";
 import Product from "components/Product";
-import ErrorMessage from "components/ErrorMessage";
+import NoSearchResults from "components/NoSearchResults";
 
 interface SearchResultsProps {
   result: SearchResult;
@@ -9,9 +9,11 @@ interface SearchResultsProps {
 
 const SearchResults: FunctionComponent<SearchResultsProps> = (props) => {
   const { result } = props;
-  if (!result.success) return <ErrorMessage />;
+  if (!result.success) return <NoSearchResults />;
 
   const { products } = result;
+  if (!products.length) return <NoSearchResults />;
+
   return (
     <>
       {products.map((product) => (
