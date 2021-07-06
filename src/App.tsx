@@ -1,6 +1,6 @@
 import "./reset.css";
 import "./App.css";
-import SearchPage from "pages/search";
+import SearchPage from "pages/Search";
 import Logo from "components/Logo";
 
 function App() {
