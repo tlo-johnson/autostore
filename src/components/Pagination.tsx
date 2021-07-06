@@ -9,7 +9,7 @@ interface PaginationProps {
 const Pagination = (props: PaginationProps) => {
   const { numPages, onPerformSearch } = props;
 
-  if (!numPages) return <div />;
+  if (!(numPages > 1)) return <div />;
 
   return (
     <ReactPaginate

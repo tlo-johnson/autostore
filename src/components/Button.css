@@ -10,6 +10,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background: rgb(223, 52, 52) none repeat scroll 0% 0%;
 }
