@@ -1,5 +1,8 @@
-.Product {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 1rem 0.5rem;
+.product {
+  padding: 2rem 0.5rem;
+  border-bottom: 2px solid rgb(243, 243, 243);
+}
+
+.product:last-child {
+  border-bottom: none;
 }

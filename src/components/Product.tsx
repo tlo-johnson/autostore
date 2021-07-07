@@ -8,7 +8,7 @@ interface ProductProps {
 
 const Product: FunctionComponent<ProductProps> = ({ product }) => {
   return (
-    <div className="Product">
+    <div className="product">
       <p>{`Name: ${product.name}`}</p>
       {product.description && <p>{`Description: ${product.description}`}</p>}
     </div>
