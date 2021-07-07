@@ -4,8 +4,11 @@ import user from "@testing-library/user-event";
 import { performSearch } from "lib/search";
 import searchResult from "../../data/searchResult";
 import { SearchResult } from "domain/searchResults";
+import { defaultNumHitsPerPage } from "lib/constants";
 
 jest.mock("lib/search");
+
+const query = "Chicken";
 
 const init = (searchResponse: SearchResult) => {
   performSearch.mockResolvedValue(searchResponse);
@@ -14,7 +17,6 @@ const init = (searchResponse: SearchResult) => {
 
   const searchBox = screen.getByPlaceholderText("Search ...");
   const searchButton = screen.getByText("Search");
-  const query = "Chicken";
 
   user.type(searchBox, query);
   user.click(searchButton);
@@ -68,4 +70,30 @@ test("does not display pagination when only one page of results is returned", as
     const searchResults = screen.queryByText("1");
     expect(searchResults).not.toBeInTheDocument();
   });
+});
+
+test("defaults to the right number of hits per page", async () => {
+  const searchResponse = { success: true, ...searchResult };
+  init(searchResponse);
+
+  await waitFor(() => expect(performSearch).toHaveBeenCalledWith(query, defaultNumHitsPerPage, undefined));
+});
+
+test("queries the right number of hits per page", async () => {
+  const searchResponse = { success: true, ...searchResult };
+  performSearch.mockResolvedValue(searchResponse);
+
+  render(<SearchPage />);
+
+  const searchBox = screen.getByPlaceholderText("Search ...");
+  const searchButton = screen.getByText("Search");
+
+  user.type(searchBox, query);
+  user.click(searchButton);
+  await waitFor(() => expect(performSearch).toHaveBeenCalledWith(query, defaultNumHitsPerPage, undefined));
+
+  const numHitsPerPage = 40;
+  const numSearchResults = screen.getByText(numHitsPerPage);
+  user.click(numSearchResults);
+  await waitFor(() => expect(performSearch).toHaveBeenCalledWith(query, numHitsPerPage, undefined));
 });

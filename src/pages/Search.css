@@ -20,3 +20,7 @@
 .search-options .slider {
   flex-grow: 1;
 }
+
+.slider p {
+  font-size: 0.8rem;
+}
