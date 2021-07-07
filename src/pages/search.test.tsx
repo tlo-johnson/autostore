@@ -81,19 +81,26 @@ test("defaults to the right number of hits per page", async () => {
 
 test("queries the right number of hits per page", async () => {
   const searchResponse = { success: true, ...searchResult };
-  performSearch.mockResolvedValue(searchResponse);
+  init(searchResponse);
 
-  render(<SearchPage />);
-
-  const searchBox = screen.getByPlaceholderText("Search ...");
-  const searchButton = screen.getByText("Search");
-
-  user.type(searchBox, query);
-  user.click(searchButton);
   await waitFor(() => expect(performSearch).toHaveBeenCalledWith(query, defaultNumHitsPerPage, undefined));
 
   const numHitsPerPage = 40;
   const numSearchResults = screen.getByText(numHitsPerPage);
   user.click(numSearchResults);
   await waitFor(() => expect(performSearch).toHaveBeenCalledWith(query, numHitsPerPage, undefined));
+});
+
+test("does not perform a search when number of search results per page is changed before a search is initially performed", async () => {
+  render(<SearchPage />);
+
+  const numHitsPerPage = 40;
+  const numSearchResults = screen.getByText(numHitsPerPage);
+  user.click(numSearchResults);
+
+  await waitFor(() => {
+    const slider = screen.getByRole("slider");
+    expect(slider).toHaveAttribute("aria-valuenow", String(numHitsPerPage));
+  });
+  expect(performSearch).not.toHaveBeenCalled();
 });

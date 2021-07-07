@@ -1,4 +1,4 @@
-import { FunctionComponent, KeyboardEvent, useCallback, useEffect, useRef } from "react";
+import { FunctionComponent, KeyboardEvent, useRef } from "react";
 import Input from "components/Input";
 import Button from "components/Button";
 import { performSearch } from "lib/search";
@@ -14,25 +14,22 @@ const SearchPage: FunctionComponent = () => {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<SearchResult>(DefaultSearchResult);
   const searchPerformed = useRef(false);
-  const [numHitsPerPage, setNumHitsPerPage] = useState(defaultNumHitsPerPage);
+  const numHitsPerPage = useRef(defaultNumHitsPerPage);
 
-  const onPerformSearch = useCallback(
-    async (pageNumber?: number) => {
-      searchPerformed.current = true;
-      const result = await performSearch(query, numHitsPerPage, pageNumber);
-      setResult(result);
-    },
-    [numHitsPerPage, query]
-  );
+  const onPerformSearch = async (pageNumber?: number) => {
+    searchPerformed.current = true;
+    const result = await performSearch(query, numHitsPerPage.current, pageNumber);
+    setResult(result);
+  };
 
   const searchOnEnter = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") onPerformSearch();
   };
 
-  useEffect(() => {
-    if (!searchPerformed.current) return;
-    onPerformSearch();
-  }, [onPerformSearch]);
+  const updateNumHitsPerPage = (val: number) => {
+    numHitsPerPage.current = val;
+    if (searchPerformed.current) onPerformSearch();
+  };
 
   return (
     <div className="Search">
@@ -40,7 +37,7 @@ const SearchPage: FunctionComponent = () => {
       <div className="search-options">
         <div className="slider">
           <p>Number of search results per page</p>
-          <Slider onChange={setNumHitsPerPage} />
+          <Slider onChange={updateNumHitsPerPage} />
         </div>
         <Button className="btn-search" onClick={() => onPerformSearch()}>
           Search
@@ -49,7 +46,7 @@ const SearchPage: FunctionComponent = () => {
       {searchPerformed.current && (
         <>
           <SearchResults result={result} />
-          <Pagination numPages={result.numPages} onPerformSearch={onPerformSearch} />
+          <Pagination numPages={result?.numPages} onPerformSearch={onPerformSearch} />
         </>
       )}
     </div>

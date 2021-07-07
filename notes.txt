@@ -1,0 +1,12 @@
+- api keys are currently exposed
+  - are they set to expire / are they rotated once this is done?
+
+- can do snapshot testing for UI
+  - not a big fan
+
+- dev ideas
+  - display product image. could not find base url for images
+  - display tags and categories.
+    - on click, filter the results based on the selected tag/category
+    - on click, perform a new search for the selected tag/category
+  - a way to traverse category tree?

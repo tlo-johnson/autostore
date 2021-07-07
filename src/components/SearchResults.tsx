@@ -9,7 +9,7 @@ interface SearchResultsProps {
 
 const SearchResults: FunctionComponent<SearchResultsProps> = (props) => {
   const { result } = props;
-  if (!result.success) return <NoSearchResults />;
+  if (!result?.success) return <NoSearchResults />;
 
   const { products } = result;
   if (!products.length) return <NoSearchResults />;
