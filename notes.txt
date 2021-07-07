@@ -10,3 +10,9 @@
     - on click, filter the results based on the selected tag/category
     - on click, perform a new search for the selected tag/category
   - a way to traverse category tree?
+
+- accessibility
+
+- responsive
+
+- seo
