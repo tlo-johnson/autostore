@@ -7,6 +7,7 @@ import { SearchResult, DefaultSearchResult } from "domain/searchResults";
 import SearchResults from "components/SearchResults";
 import "./Search.css";
 import Pagination from "components/Pagination";
+import Slider from "components/Slider";
 
 const SearchPage: FunctionComponent = () => {
   const [query, setQuery] = useState("");
@@ -26,9 +27,15 @@ const SearchPage: FunctionComponent = () => {
   return (
     <div className="Search">
       <Input placeholder="Search ..." onChange={(e) => setQuery(e.currentTarget.value)} onKeyPress={searchOnEnter} />
-      <Button className="search" onClick={() => onPerformSearch()}>
-        Search
-      </Button>
+      <div className="search-options">
+        <div className="slider">
+          <p>Number of search results per page</p>
+          <Slider />
+        </div>
+        <Button className="btn-search" onClick={() => onPerformSearch()}>
+          Search
+        </Button>
+      </div>
       {searchPerformed && (
         <>
           <SearchResults result={result} />

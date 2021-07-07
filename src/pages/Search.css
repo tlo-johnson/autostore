@@ -3,8 +3,20 @@
   flex-direction: column;
 }
 
-.Search .search {
+.btn-search {
   padding: 1rem 2rem;
   align-self: flex-end;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  margin-left: 5rem;
+}
+
+.search-options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 0.5rem 0;
+}
+
+.search-options .slider {
+  flex-grow: 1;
 }
